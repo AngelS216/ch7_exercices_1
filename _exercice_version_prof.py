@@ -4,9 +4,24 @@
 import math
 import sys
 sys.path.insert(1, 'D:\charge_cours\INF1007\H2021\exercices\\2021H_ch6_1_exercices')
-from exercice_ch6 import frequence
+#from exercice_ch6 import frequence
 from turtle import *
 import re
+
+def frequence(sentence: str) -> dict:
+    # TODO: Afficher les lettres les plus fréquentes
+    #       Retourner le tableau de lettres
+    frequency = dict()
+    for letter in sentence:
+        frequency[letter] = sentence.count(letter)
+
+    sorted_keys = sorted(frequency, key=frequency.__getitem__, reverse=True)
+    for key in sorted_keys:
+        if frequency[key] > 5:
+            print(f"Le caractère {key} revient {frequency[key]} fois.")
+
+    return frequency
+    
 
 def compute_volume_and_mass(a=2, b=4, c=6, masse_vol=10):
     volume = math.pi * a * b * c * 4 / 3
@@ -37,6 +52,7 @@ def valide(saisie):
     """
     if len(saisie) != 0:
         return set(saisie).issubset("atgc")
+        #issubset convert "atgc" into a set then check if elem of the set saisie is all in the set of "atgc"
 
     return False
     """
